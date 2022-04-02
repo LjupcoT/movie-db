@@ -38,6 +38,14 @@ dependencies {
   implementation appDependencies.appCompat
   implementation appDependencies.material
   implementation appDependencies.constraintLayout
+  implementation appDependencies.koinAndroid
+  implementation appDependencies.koinScope
+  implementation appDependencies.koinViewModel
+  implementation appDependencies.coroutinesCore
+  implementation appDependencies.coroutinesAndroid
+  implementation appDependencies.okHttp
+  implementation appDependencies.retrofit
+  implementation appDependencies.retrofitJacksonConverter
 
   testImplementation testDependencies.junit
 }

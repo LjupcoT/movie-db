@@ -3,6 +3,7 @@
     package="com.twocoders.movies">
 
   <application
+      android:name=".App"
       android:icon="@drawable/ic_launcher"
       android:label="@string/app_name"
       android:supportsRtl="true"
