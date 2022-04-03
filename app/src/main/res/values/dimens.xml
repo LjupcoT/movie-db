@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <!-- margins -->
+  <dimen name="margin_small">8dp</dimen>
+  <dimen name="margin_default">12dp</dimen>
+  <dimen name="margin_large">20dp</dimen>
+
+  <!-- paddings -->
+  <dimen name="padding_small">8dp</dimen>
+  <dimen name="padding_default">12dp</dimen>
+  <dimen name="padding_large">20dp</dimen>
+
+  <!-- font-sizes -->
+  <dimen name="text_size_default">16sp</dimen>
+  <dimen name="text_size_title">32sp</dimen>
+</resources>

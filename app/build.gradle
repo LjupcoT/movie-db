@@ -30,6 +30,10 @@ android {
   kotlinOptions {
     jvmTarget = '1.8'
   }
+
+  dataBinding {
+    enabled true
+  }
 }
 
 dependencies {
@@ -38,6 +42,17 @@ dependencies {
   implementation appDependencies.appCompat
   implementation appDependencies.material
   implementation appDependencies.constraintLayout
+  implementation appDependencies.koinAndroid
+  implementation appDependencies.koinScope
+  implementation appDependencies.koinViewModel
+  implementation appDependencies.coroutinesCore
+  implementation appDependencies.coroutinesAndroid
+  implementation appDependencies.okHttp
+  implementation appDependencies.retrofit
+  implementation appDependencies.retrofitJacksonConverter
+  implementation appDependencies.navigationFragment
+  implementation appDependencies.navigationUi
+  implementation appDependencies.glide
 
   testImplementation testDependencies.junit
 }
