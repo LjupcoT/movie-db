@@ -5,12 +5,15 @@
 
   <androidx.constraintlayout.widget.ConstraintLayout
       android:layout_width="match_parent"
-      android:layout_height="match_parent">
+      android:layout_height="match_parent"
+      android:paddingVertical="@dimen/padding_default">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/moviesList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/margin_default"
+        android:paddingVertical="@dimen/padding_default"
         app:layout_constrainedHeight="true"
         app:layout_constraintBottom_toTopOf="@id/pageValue"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,6 +23,7 @@
         android:id="@+id/paginationPrev"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:padding="@dimen/padding_large"
         android:src="@drawable/ic_back"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -28,18 +32,22 @@
         android:id="@+id/paginationNext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:padding="@dimen/padding_large"
         android:src="@drawable/ic_next"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
         android:id="@+id/pageValue"
+        style="@style/Text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="todo"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/paginationNext"
         app:layout_constraintEnd_toStartOf="@id/paginationNext"
-        app:layout_constraintStart_toEndOf="@id/paginationPrev" />
+        app:layout_constraintStart_toEndOf="@id/paginationPrev"
+        app:layout_constraintTop_toTopOf="@id/paginationNext"
+        android:paddingVertical="@dimen/padding_default"
+        tools:text="1/10" />
 
     <ProgressBar
         android:id="@+id/progressBar"

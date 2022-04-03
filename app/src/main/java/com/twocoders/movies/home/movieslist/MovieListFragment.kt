@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.twocoders.movies.R
 import com.twocoders.movies.databinding.FragmentMoviesListBinding
@@ -45,6 +46,7 @@ class MovieListFragment : Fragment() {
     views.moviesList.apply {
       this.adapter = moviesAdapter
       this.layoutManager = LinearLayoutManager(context)
+      this.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
     }
     initObservers()
     initListeners()
