@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.twocoders.movies.R
 import com.twocoders.movies.databinding.FragmentMoviesListBinding
+import com.twocoders.movies.errorhandling.ErrorHandler
 import com.twocoders.movies.network.models.Resource
 import com.twocoders.movies.utils.show
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -66,6 +67,10 @@ class MovieListFragment : Fragment() {
       views.progressBar.show(resource.state == Resource.State.LOADING)
       if (resource.state == Resource.State.SUCCESS && resource.data != null) {
         moviesAdapter.updateMovieItems(resource.data.results.orEmpty())
+      } else if (resource.state == Resource.State.ERROR) {
+        context?.let {
+          ErrorHandler.handleError(it, resource.error)
+        }
       }
     }
     viewModel.page.observe(viewLifecycleOwner) { pageNumber ->
