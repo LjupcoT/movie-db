@@ -1,20 +1,135 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-  <androidx.constraintlayout.widget.ConstraintLayout
+  <data>
+
+    <import type="android.view.View" />
+
+    <variable
+        name="movie"
+        type="com.twocoders.movies.network.models.MovieDetails" />
+  </data>
+
+  <androidx.core.widget.NestedScrollView
       android:layout_width="match_parent"
       android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TODO"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-  </androidx.constraintlayout.widget.ConstraintLayout>
+      <ImageView
+          android:id="@+id/moviePosterView"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent" />
 
+      <TextView
+          android:id="@+id/movieTitle"
+          style="@style/Text.Title"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:paddingHorizontal="@dimen/padding_default"
+          android:paddingVertical="@dimen/padding_large"
+          android:text="@{ movie.title }"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@id/moviePosterView"
+          tools:text="Movie title" />
+
+      <TextView
+          android:id="@+id/movieTagline"
+          style="@style/Text"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:paddingHorizontal="@dimen/padding_default"
+          android:paddingVertical="@dimen/padding_default"
+          android:text="@{ movie.tagline }"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@id/movieTitle"
+          tools:text="Movie tagline" />
+
+      <TextView
+          android:id="@+id/movieVoteAverage"
+          style="@style/Text.Small"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="@dimen/margin_default"
+          android:paddingVertical="@dimen/padding_small"
+          android:text="@{String.format(@string/average_vote, movie.voteAverage)}"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@id/movieTagline"
+          tools:text="Average vote rating: 5.0" />
+
+      <TextView
+          android:id="@+id/movieVotesCount"
+          style="@style/Text.Small"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginEnd="@dimen/margin_default"
+          android:padding="@dimen/padding_small"
+          android:text="@{String.format(@string/total_votes, movie.voteCount)}"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintTop_toTopOf="@id/movieVoteAverage"
+          tools:text="Total votes: 1234" />
+
+      <TextView
+          android:id="@+id/movieGenres"
+          style="@style/Text.Small"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:padding="@dimen/padding_default"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@id/movieVoteAverage"
+          tools:text="Action, Adventure, Science Fiction"/>
+
+      <TextView
+          android:id="@+id/movieDescription"
+          style="@style/Text"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:padding="@dimen/padding_default"
+          android:text="@{ movie.overview }"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@id/movieGenres"
+          tools:text="@string/lorem_ipsum" />
+
+      <TextView
+          android:id="@+id/movieProductionCompanies"
+          style="@style/Text.SubTitle"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:padding="@dimen/padding_default"
+          android:text="@string/production_companies_title"
+          android:visibility="@{ movie.productionCompanies != null ? View.VISIBLE : View.GONE }"
+          app:layout_constraintTop_toBottomOf="@id/movieDescription" />
+
+      <GridView
+          android:id="@+id/productionCompaniesList"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:columnWidth="@dimen/grid_view_column_width_default"
+          android:gravity="center"
+          android:numColumns="2"
+          android:stretchMode="spacingWidthUniform"
+          android:visibility="@{ movie.productionCompanies != null ? View.VISIBLE : View.GONE }"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@id/movieProductionCompanies"
+          app:layout_constraintBottom_toBottomOf="parent"/>
+
+      <ProgressBar
+          android:id="@+id/progressBar"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:visibility="gone"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent"
+          tools:visibility="visible" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+  </androidx.core.widget.NestedScrollView>
 </layout>

@@ -1,5 +1,6 @@
 package com.twocoders.movies.di
 
+import com.twocoders.movies.home.moviedetails.MovieDetailsViewModel
 import com.twocoders.movies.home.movieslist.MoviesListViewModel
 import com.twocoders.movies.home.service.MoviesService
 import com.twocoders.movies.home.service.MoviesServiceLogic
@@ -19,4 +20,5 @@ val appModule = module {
   single { MoviesServiceLogic(get()) as MoviesService }
 
   viewModel { MoviesListViewModel(get()) }
+  viewModel { MovieDetailsViewModel(get()) }
 }

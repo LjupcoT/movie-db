@@ -6,8 +6,18 @@
     <item name="android:textSize">@dimen/text_size_default</item>
   </style>
 
+  <style name="Text.Small" parent="Text">
+    <item name="android:textSize">@dimen/text_size_small</item>
+    <item name="android:textStyle">italic</item>
+    <item name="android:textColor">@color/typographySecondary</item>
+  </style>
+
   <style name="Text.Title" parent="Text">
     <item name="android:textSize">@dimen/text_size_title</item>
+    <item name="android:textStyle">bold</item>
+  </style>
+
+  <style name="Text.SubTitle" parent="Text">
     <item name="android:textStyle">bold</item>
   </style>
 

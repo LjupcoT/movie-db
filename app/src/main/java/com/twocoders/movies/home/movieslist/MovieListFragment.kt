@@ -14,7 +14,6 @@ import com.twocoders.movies.network.models.Resource
 import com.twocoders.movies.utils.show
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-
 /**
  * A [Fragment] screen for displaying a list of movies.
  */
@@ -33,7 +32,8 @@ class MovieListFragment : Fragment() {
   }
 
   private val onClick: (movieId: Int) -> Unit = {
-    Navigation.findNavController(views.root).navigate(R.id.navToMovieDetails)
+    val action = MovieListFragmentDirections.navToMovieDetails(it)
+    Navigation.findNavController(views.root).navigate(action)
   }
 
   override fun onCreateView(
@@ -48,6 +48,7 @@ class MovieListFragment : Fragment() {
       this.layoutManager = LinearLayoutManager(context)
       this.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
     }
+    activity?.title = "Popular movies"
     initObservers()
     initListeners()
     viewModel.fetchPopularMovies()

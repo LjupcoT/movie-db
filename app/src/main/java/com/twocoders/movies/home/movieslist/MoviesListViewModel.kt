@@ -27,7 +27,7 @@ class MoviesListViewModel(
    */
   fun fetchPopularMovies() = viewModelScope.launch {
     _movies.value = Resource.loading()
-    _movies.value = service.getPopularMovies()
+    _movies.value = service.getPopularMovies(page.value ?: 1)
   }
 
   /**
