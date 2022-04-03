@@ -56,4 +56,6 @@ dependencies {
   implementation appDependencies.glide
 
   testImplementation testDependencies.junit
+  testImplementation testDependencies.mockitoCore
+  testImplementation testDependencies.mockitoInline
 }
