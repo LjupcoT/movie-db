@@ -15,14 +15,13 @@ object RestClient {
 
   private val retrofit: Retrofit by lazy {
     Retrofit.Builder()
-      .baseUrl(baseUrl)
       .client(httpClient)
       .addConverterFactory(JacksonConverterFactory.create())
       .build()
   }
 
   /**
-   * Creates an implementation of teh API endpoints defined by the [serviceClass] interface.
+   * Creates an implementation of the API endpoints defined by the [serviceClass] interface.
    *
    * @param serviceClass the REST interface
    */

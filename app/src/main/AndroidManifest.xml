@@ -10,7 +10,7 @@
       android:theme="@style/Theme.Movies">
 
     <activity
-        android:name=".MainActivity"
+        android:name=".home.HomeActivity"
         android:exported="true"
         android:screenOrientation="portrait">
       <intent-filter>
