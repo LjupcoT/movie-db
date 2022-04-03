@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import com.twocoders.movies.databinding.FragmentMovieDetailsBinding
+import com.twocoders.movies.errorhandling.ErrorHandler
 import com.twocoders.movies.network.models.MovieDetails
 import com.twocoders.movies.network.models.Resource
 import com.twocoders.movies.utils.loadImageFromPath
@@ -44,6 +45,10 @@ class MovieDetailsFragment : Fragment() {
       views.progressBar.show(resource.state == Resource.State.LOADING)
       if (resource.state == Resource.State.SUCCESS && resource.data != null) {
         handleResponse(resource.data)
+      } else if (resource.state == Resource.State.ERROR) {
+        context?.let {
+          ErrorHandler.handleError(it, resource.error)
+        }
       }
     }
   }

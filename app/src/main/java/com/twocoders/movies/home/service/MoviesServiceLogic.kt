@@ -1,5 +1,7 @@
 package com.twocoders.movies.home.service
 
+import com.twocoders.movies.errorhandling.ErrorCodes
+import com.twocoders.movies.errorhandling.exceptions.NoConnectionException
 import com.twocoders.movies.network.apis.MoviesDbRestApi
 import com.twocoders.movies.network.models.CustomError
 import com.twocoders.movies.network.models.MovieDetails
@@ -28,6 +30,9 @@ class MoviesServiceLogic(private val api: MoviesDbRestApi) : MoviesService {
           logger.severe(response.errorBody().toString())
           Resource.error(CustomError(code = response.code()))
         }
+      } catch (e: NoConnectionException) {
+        logger.severe("Device has no connection. Request failed.")
+        Resource.error(CustomError(code = ErrorCodes.NO_CONNECTION_AVAILABLE.value))
       } catch (e: Exception) {
         logger.severe("Retrieving popular movies list: FAILED")
         logger.severe(e.toString())
@@ -48,6 +53,9 @@ class MoviesServiceLogic(private val api: MoviesDbRestApi) : MoviesService {
           logger.severe(response.errorBody().toString())
           Resource.error(CustomError(code = response.code()))
         }
+      } catch (e: NoConnectionException) {
+        logger.severe("Device has no connection. Request failed.")
+        Resource.error(CustomError(code = ErrorCodes.NO_CONNECTION_AVAILABLE.value))
       } catch (e: Exception) {
         logger.info("Retrieving movie details: FAILED")
         logger.severe(e.toString())
