@@ -8,4 +8,5 @@
   <color name="white">#FFFFFFFF</color>
 
   <color name="typography">@color/black</color>
+  <color name="typographySecondary">#535353</color>
 </resources>

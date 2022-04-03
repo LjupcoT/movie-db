@@ -3,10 +3,9 @@ package com.twocoders.movies.home.movieslist
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.twocoders.movies.databinding.ItemMovieLayoutBinding
 import com.twocoders.movies.network.models.MovieListItemModel
-import com.twocoders.movies.utils.MOVIE_POSTER_BASE_URL
+import com.twocoders.movies.utils.loadImageFromPath
 
 /**
  * Represents a [RecyclerView.ViewHolder] for a list of [MovieListItemModel]s.
@@ -51,11 +50,10 @@ class MoviesListAdapter(
      * Bind content to UI.
      */
     fun bind(movie: MovieListItemModel) {
+      views.root.setOnClickListener { movie.id?.let { id -> onClick(id) } }
       views.movieTitle.text = movie.title
       views.movieDescription.text = movie.overview
-      Glide.with(views.root)
-        .load(MOVIE_POSTER_BASE_URL + movie.posterPath)
-        .into(views.moviePosterView)
+      movie.posterPath?.let { views.moviePosterView.loadImageFromPath(it) }
     }
   }
 }

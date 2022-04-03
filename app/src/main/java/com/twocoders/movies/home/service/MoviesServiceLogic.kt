@@ -2,6 +2,7 @@ package com.twocoders.movies.home.service
 
 import com.twocoders.movies.network.apis.MoviesDbRestApi
 import com.twocoders.movies.network.models.CustomError
+import com.twocoders.movies.network.models.MovieDetails
 import com.twocoders.movies.network.models.PopularMoviesResponse
 import com.twocoders.movies.network.models.Resource
 import kotlinx.coroutines.Dispatchers
@@ -29,6 +30,26 @@ class MoviesServiceLogic(private val api: MoviesDbRestApi) : MoviesService {
         }
       } catch (e: Exception) {
         logger.severe("Retrieving popular movies list: FAILED")
+        logger.severe(e.toString())
+        Resource.error(CustomError(throwable = e, code = -1))
+      }
+    }
+  }
+
+  override suspend fun getMovieDetails(movieId: Int): Resource<MovieDetails> {
+    return withContext(Dispatchers.Default) {
+      try {
+        val response = api.getMovieDetails(movieId)
+        if (response.isSuccessful && response.body() != null) {
+          logger.info("Retrieving movie details: SUCCESSFUL")
+          Resource.success(response.body())
+        } else {
+          logger.info("Retrieving movie details: FAILED")
+          logger.severe(response.errorBody().toString())
+          Resource.error(CustomError(code = response.code()))
+        }
+      } catch (e: Exception) {
+        logger.info("Retrieving movie details: FAILED")
         logger.severe(e.toString())
         Resource.error(CustomError(throwable = e, code = -1))
       }

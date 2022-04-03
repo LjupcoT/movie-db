@@ -12,5 +12,9 @@
 
   <!-- font-sizes -->
   <dimen name="text_size_default">16sp</dimen>
+  <dimen name="text_size_small">12sp</dimen>
   <dimen name="text_size_title">32sp</dimen>
+
+  <dimen name="image_height_default">100dp</dimen>
+  <dimen name="grid_view_column_width_default">80dp</dimen>
 </resources>
