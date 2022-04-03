@@ -15,6 +15,7 @@ object RestClient {
 
   private val retrofit: Retrofit by lazy {
     Retrofit.Builder()
+      .baseUrl(baseUrl)
       .client(httpClient)
       .addConverterFactory(JacksonConverterFactory.create())
       .build()

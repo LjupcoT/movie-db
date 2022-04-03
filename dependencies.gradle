@@ -28,6 +28,9 @@ ext {
   // Navigation
   navigationVersion = '2.4.1'
 
+  // Glide
+  glideVersion = '4.13.0'
+
   appDependencies = [
       kotlinStdLib            : "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion",
       coreKtx                 : "androidx.core:core-ktx:$coreKtxVersion",
@@ -43,7 +46,8 @@ ext {
       retrofit                : "com.squareup.retrofit2:retrofit:$retrofitVersion",
       retrofitJacksonConverter: "com.squareup.retrofit2:converter-jackson:$retrofitVersion",
       navigationFragment      : "androidx.navigation:navigation-fragment-ktx:$navigationVersion",
-      navigationUi            : "androidx.navigation:navigation-ui-ktx:$navigationVersion"
+      navigationUi            : "androidx.navigation:navigation-ui-ktx:$navigationVersion",
+      glide                   : "com.github.bumptech.glide:glide:$glideVersion"
   ]
 
   testDependencies = [

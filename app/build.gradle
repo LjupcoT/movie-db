@@ -52,6 +52,7 @@ dependencies {
   implementation appDependencies.retrofitJacksonConverter
   implementation appDependencies.navigationFragment
   implementation appDependencies.navigationUi
+  implementation appDependencies.glide
 
   testImplementation testDependencies.junit
 }
