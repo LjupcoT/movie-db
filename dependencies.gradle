@@ -25,6 +25,9 @@ ext {
   retrofitVersion = '2.8.1'
   retrofitJacksonConverterVersion = '2.9.0'
 
+  // Navigation
+  navigationVersion = '2.4.1'
+
   appDependencies = [
       kotlinStdLib            : "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion",
       coreKtx                 : "androidx.core:core-ktx:$coreKtxVersion",
@@ -39,6 +42,8 @@ ext {
       okHttp                  : "com.squareup.okhttp3:okhttp:$okHttpVersion",
       retrofit                : "com.squareup.retrofit2:retrofit:$retrofitVersion",
       retrofitJacksonConverter: "com.squareup.retrofit2:converter-jackson:$retrofitVersion",
+      navigationFragment      : "androidx.navigation:navigation-fragment-ktx:$navigationVersion",
+      navigationUi            : "androidx.navigation:navigation-ui-ktx:$navigationVersion"
   ]
 
   testDependencies = [
