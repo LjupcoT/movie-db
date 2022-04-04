@@ -11,6 +11,7 @@ ext {
 
   // Testing versions
   junitVersion = '4.13.2'
+  mockitoVersion = '3.11.2'
 
   // Koin
   koinVersion = '2.2.2'
@@ -51,6 +52,8 @@ ext {
   ]
 
   testDependencies = [
-      junit               : "junit:junit:$junitVersion"
+      junit               : "junit:junit:$junitVersion",
+      mockitoCore             : "org.mockito:mockito-core:$mockitoVersion",
+      mockitoInline           : "org.mockito:mockito-inline:$mockitoVersion",
   ]
 }
